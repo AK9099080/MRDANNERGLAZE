@@ -235,6 +235,7 @@ footer p { font-family:'Caveat',cursive; font-size:1rem; color:var(--muted); }
     <li><a onclick="goTo('quiz')" id="nav-quiz">🎯 Quiz</a></li>
     <li><a onclick="goTo('poll')" id="nav-poll">🗳️ Polls</a></li>
     <li><a onclick="goTo('guestbook')" id="nav-guestbook">✍️ Guestbook</a></li>
+    <li><a onclick="goTo('brain')" id="nav-brain">🧠 His Brain</a></li>
   </ul>
 </nav>
 
@@ -584,6 +585,128 @@ footer p { font-family:'Caveat',cursive; font-size:1rem; color:var(--muted); }
   </div>
   <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
 </div>
+
+<!-- ========== BRAIN ========== -->
+<div class="page" id="page-brain">
+  <div class="page-header">
+    <h1>🧠 Mr. Danner's<br><span class="accent">Brain</span></h1>
+    <p style="color:var(--red);font-weight:700;">⚠️ WARNING: extremely large. may cause awe.</p>
+  </div>
+
+  <div style="text-align:center;padding:0 1.5rem 2rem;position:relative;">
+    <p style="font-family:'Permanent Marker',cursive;font-size:clamp(1rem,3vw,1.6rem);color:var(--muted);margin-bottom:0.5rem;">we tried to show the full brain but...</p>
+    <p style="font-family:'Permanent Marker',cursive;font-size:clamp(1.3rem,4vw,2.2rem);color:var(--yellow);">it literally doesn't fit on the page 💀</p>
+  </div>
+
+  <!-- OVERFLOW BRAIN SECTION -->
+  <div style="position:relative;overflow:hidden;width:100%;height:340px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(255,209,102,0.08),transparent);">
+    <!-- cut off warning tape top -->
+    <div style="position:absolute;top:0;left:0;right:0;height:28px;background:repeating-linear-gradient(90deg,#ffd166 0px,#ffd166 30px,#0d0d0d 30px,#0d0d0d 60px);opacity:0.7;z-index:10;"></div>
+
+    <!-- THE GIANT BRAIN SVG - deliberately overflowing -->
+    <div id="brain-container" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-46%);width:900px;height:900px;animation:brainFloat 4s ease-in-out infinite;">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;filter:drop-shadow(0 0 40px rgba(255,209,102,0.5)) drop-shadow(0 0 80px rgba(255,100,100,0.3));">
+        <!-- brain glow base -->
+        <ellipse cx="100" cy="108" rx="72" ry="58" fill="rgba(255,209,102,0.08)" />
+        <!-- left hemisphere -->
+        <path d="M100,60 C85,55 68,58 58,68 C48,78 44,90 46,102 C48,114 54,122 62,128 C70,134 80,136 88,134 C92,133 96,131 100,128" fill="none" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- right hemisphere -->
+        <path d="M100,60 C115,55 132,58 142,68 C152,78 156,90 154,102 C152,114 146,122 138,128 C130,134 120,136 112,134 C108,133 104,131 100,128" fill="none" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- center divide -->
+        <line x1="100" y1="60" x2="100" y2="128" stroke="rgba(255,209,102,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- left hemisphere wrinkles -->
+        <path d="M60,80 C65,75 72,76 75,82" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M52,95 C60,90 68,92 70,99" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M54,110 C62,106 70,108 72,115" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M62,122 C68,118 76,120 78,126" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M72,70 C76,65 83,67 84,73" fill="none" stroke="#ffd166" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <path d="M58,84 C63,80 69,82 70,88" fill="none" stroke="#e63946" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <path d="M56,100 C62,96 69,99 70,105" fill="none" stroke="#06d6a0" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <!-- right hemisphere wrinkles -->
+        <path d="M140,80 C135,75 128,76 125,82" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M148,95 C140,90 132,92 130,99" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M146,110 C138,106 130,108 128,115" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M138,122 C132,118 124,120 122,126" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        <path d="M128,70 C124,65 117,67 116,73" fill="none" stroke="#ffd166" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <path d="M142,84 C137,80 131,82 130,88" fill="none" stroke="#e63946" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <path d="M144,100 C138,96 131,99 130,105" fill="none" stroke="#06d6a0" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <!-- stem / brain stem -->
+        <path d="M92,128 C90,136 91,142 94,146 C97,150 103,150 106,146 C109,142 110,136 108,128" fill="none" stroke="#ffd166" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+        <!-- glow dots / neurons -->
+        <circle cx="68" cy="85" r="2" fill="#ffd166" opacity="0.9"><animate attributeName="opacity" values="0.9;0.2;0.9" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="58" cy="100" r="1.5" fill="#06d6a0" opacity="0.9"><animate attributeName="opacity" values="0.9;0.1;0.9" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="115" r="2" fill="#e63946" opacity="0.9"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/></circle>
+        <circle cx="132" cy="85" r="2" fill="#ffd166" opacity="0.9"><animate attributeName="opacity" values="0.9;0.2;0.9" dur="2.1s" repeatCount="indefinite"/></circle>
+        <circle cx="142" cy="100" r="1.5" fill="#06d6a0" opacity="0.9"><animate attributeName="opacity" values="0.9;0.15;0.9" dur="1.7s" repeatCount="indefinite"/></circle>
+        <circle cx="136" cy="115" r="2" fill="#e63946" opacity="0.9"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.5s" repeatCount="indefinite"/></circle>
+        <!-- neuron connections -->
+        <line x1="68" y1="85" x2="58" y2="100" stroke="rgba(255,209,102,0.25)" stroke-width="0.8"/>
+        <line x1="58" y1="100" x2="64" y2="115" stroke="rgba(6,214,160,0.25)" stroke-width="0.8"/>
+        <line x1="132" y1="85" x2="142" y2="100" stroke="rgba(255,209,102,0.25)" stroke-width="0.8"/>
+        <line x1="142" y1="100" x2="136" y2="115" stroke="rgba(6,214,160,0.25)" stroke-width="0.8"/>
+        <!-- IQ label inside -->
+        <text x="100" y="98" text-anchor="middle" font-family="sans-serif" font-size="7" fill="rgba(255,209,102,0.6)" font-weight="bold">IQ: ∞</text>
+      </svg>
+    </div>
+
+    <!-- OVERFLOW ARROWS pointing left/right -->
+    <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:'Permanent Marker',cursive;font-size:0.75rem;color:var(--yellow);opacity:0.7;writing-mode:vertical-rl;letter-spacing:0.1em;">← still going</div>
+    <div style="position:absolute;right:8px;top:50%;transform:translateY(-50%) rotate(180deg);font-family:'Permanent Marker',cursive;font-size:0.75rem;color:var(--yellow);opacity:0.7;writing-mode:vertical-rl;letter-spacing:0.1em;">← still going</div>
+
+    <!-- cut off warning tape bottom -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:28px;background:repeating-linear-gradient(90deg,#ffd166 0px,#ffd166 30px,#0d0d0d 30px,#0d0d0d 60px);opacity:0.7;z-index:10;"></div>
+  </div>
+
+  <!-- SIZE WARNING LABELS -->
+  <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;padding:1.5rem 1rem 0;text-align:center;">
+    <div style="font-family:'Permanent Marker',cursive;font-size:0.9rem;color:var(--red);border:2px solid var(--red);padding:0.4rem 1rem;border-radius:6px;transform:rotate(-1.5deg);">⬆️ cut off at the top</div>
+    <div style="font-family:'Permanent Marker',cursive;font-size:0.9rem;color:var(--red);border:2px solid var(--red);padding:0.4rem 1rem;border-radius:6px;transform:rotate(1deg);">⬇️ cut off at the bottom</div>
+    <div style="font-family:'Permanent Marker',cursive;font-size:0.9rem;color:var(--red);border:2px solid var(--red);padding:0.4rem 1rem;border-radius:6px;transform:rotate(-0.5deg);">↔️ cut off on both sides</div>
+  </div>
+
+  <!-- STATS -->
+  <div style="max-width:700px;margin:2.5rem auto;padding:0 1.5rem;">
+    <div style="background:var(--card);border:2px solid var(--border);border-radius:10px;overflow:hidden;">
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;" class="brain-row">
+        <span style="font-family:'Caveat',cursive;font-size:1.1rem;color:#ccc;">📐 Brain size</span>
+        <span style="font-family:'Permanent Marker',cursive;font-size:1rem;color:var(--yellow);">too big to measure</span>
+      </div>
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Caveat',cursive;font-size:1.1rem;color:#ccc;">🧪 IQ</span>
+        <span style="font-family:'Permanent Marker',cursive;font-size:1rem;color:var(--yellow);">∞ (unmeasurable)</span>
+      </div>
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Caveat',cursive;font-size:1.1rem;color:#ccc;">💾 History knowledge stored</span>
+        <span style="font-family:'Permanent Marker',cursive;font-size:1rem;color:var(--green);">ALL OF IT</span>
+      </div>
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Caveat',cursive;font-size:1.1rem;color:#ccc;">⚡ Neurons firing per second</span>
+        <span style="font-family:'Permanent Marker',cursive;font-size:1rem;color:var(--red);">yes</span>
+      </div>
+      <div style="padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Caveat',cursive;font-size:1.1rem;color:#ccc;">📺 Screens needed to display full brain</span>
+        <span style="font-family:'Permanent Marker',cursive;font-size:1rem;color:var(--yellow);">at least 47</span>
+      </div>
+      <div style="padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-family:'Caveat',cursive;font-size:1.1rem;color:#ccc;">🌍 Compared to average brain</span>
+        <span style="font-family:'Permanent Marker',cursive;font-size:1rem;color:var(--green);">not even comparable bro</span>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;padding:2rem;background:linear-gradient(135deg,rgba(255,209,102,0.07),rgba(230,57,70,0.05));border:2px dashed var(--yellow);border-radius:12px;text-align:center;">
+      <p style="font-family:'Permanent Marker',cursive;font-size:clamp(1.1rem,3vw,1.6rem);color:var(--text);line-height:1.5;">scientists tried to 3D model his brain.<br><span style="color:var(--red);">the computer crashed.</span></p>
+      <p style="font-family:'Caveat',cursive;font-size:1rem;color:var(--muted);margin-top:0.8rem;">we are not making this up. (we might be making this up. the point stands.)</p>
+    </div>
+  </div>
+
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<style>
+@keyframes brainFloat { 0%,100%{transform:translate(-50%,-46%) scale(1);} 50%{transform:translate(-50%,-46%) scale(1.04);} }
+.brain-row { transition: background 0.2s; }
+.brain-row:hover { background: rgba(255,209,102,0.04); }
+</style>
 
 <script>
 // NAV
