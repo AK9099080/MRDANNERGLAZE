@@ -1,40 +1,791 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MRDANNERGLAZE</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            border-bottom: 3px solid #007bff;
-            padding-bottom: 10px;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR. DANNER IS THE GOAT 🐐</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;700&family=Caveat:wght@400;700&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #e63946;
+  --yellow: #ffd166;
+  --blue: #118ab2;
+  --green: #06d6a0;
+  --dark: #0d0d0d;
+  --text: #f0f0f0;
+  --muted: #888;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--dark); color: var(--text); font-family: 'Oswald', sans-serif; min-height: 100vh; overflow-x: hidden; }
+body::after { content:''; position:fixed; inset:0; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px); pointer-events:none; z-index:9999; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(13,13,13,0.97); border-bottom:3px solid var(--yellow); display:flex; align-items:center; justify-content:space-between; padding:0 1.5rem; height:56px; backdrop-filter:blur(8px); }
+.nav-logo { font-family:'Permanent Marker',cursive; font-size:1.3rem; color:var(--yellow); text-decoration:none; }
+.nav-logo span { color:var(--red); }
+.nav-links { display:flex; gap:0.2rem; list-style:none; flex-wrap:wrap; }
+.nav-links a { font-family:'Caveat',cursive; font-size:1rem; font-weight:700; color:var(--muted); text-decoration:none; padding:0.3rem 0.6rem; border-radius:4px; transition:all 0.15s; cursor:pointer; border:1px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color:var(--yellow); border-color:var(--yellow); background:rgba(255,209,102,0.08); }
+.hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; padding:8px; }
+.hamburger span { display:block; width:22px; height:2px; background:var(--yellow); border-radius:2px; }
+@media(max-width:700px){ .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(13,13,13,0.99);flex-direction:column;padding:1rem;border-bottom:2px solid var(--border);gap:0.5rem;} .nav-links.open{display:flex;} .hamburger{display:flex;} }
+
+/* PAGES */
+.page { display:none; padding-top:56px; min-height:100vh; }
+.page.active { display:block; }
+
+/* PAGE HEADER */
+.page-header { padding:4rem 1.5rem 2rem; text-align:center; }
+.page-header h1 { font-family:'Permanent Marker',cursive; font-size:clamp(2.5rem,8vw,5rem); line-height:1.05; }
+.page-header p { font-family:'Caveat',cursive; font-size:1.2rem; color:var(--muted); margin-top:0.8rem; }
+.accent { color:var(--yellow); } .accent-red { color:var(--red); } .accent-green { color:var(--green); } .accent-blue { color:var(--blue); }
+
+/* REVEAL */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* CARDS */
+.about-card { background:var(--card); border:2px solid var(--border); border-radius:8px; padding:1.8rem; transition:transform 0.2s,border-color 0.2s; }
+.about-card:hover { transform:translateY(-4px) rotate(-0.5deg); border-color:var(--yellow); }
+.about-card .icon { font-size:2rem; margin-bottom:0.8rem; display:block; }
+.about-card h3 { font-family:'Permanent Marker',cursive; font-size:1.2rem; color:var(--yellow); margin-bottom:0.5rem; }
+.about-card p { font-family:'Caveat',cursive; font-size:1rem; line-height:1.6; color:#ccc; }
+
+/* GRID */
+.grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+
+/* DIVIDER */
+.sdiv { height:3px; background:linear-gradient(90deg,transparent,var(--yellow),var(--red),var(--blue),transparent); opacity:0.4; }
+
+/* BUTTON */
+.btn { font-family:'Permanent Marker',cursive; font-size:1rem; padding:0.7rem 1.8rem; border:3px solid var(--yellow); background:transparent; color:var(--yellow); border-radius:8px; cursor:pointer; transition:all 0.15s; }
+.btn:hover { background:var(--yellow); color:var(--dark); transform:scale(1.05) rotate(-1deg); }
+.btn:active { transform:scale(0.98); }
+.btn-red { border-color:var(--red); color:var(--red); } .btn-red:hover { background:var(--red); color:#fff; }
+.btn-green { border-color:var(--green); color:var(--green); } .btn-green:hover { background:var(--green); color:var(--dark); }
+
+/* STICKER */
+.sticker { display:inline-block; background:var(--yellow); color:var(--dark); font-family:'Permanent Marker',cursive; font-size:0.8rem; padding:0.25rem 0.7rem; border-radius:4px; transform:rotate(-2deg); margin:0.2rem; }
+.sticker.red { background:var(--red); color:#fff; transform:rotate(1.5deg); }
+.sticker.green { background:var(--green); color:var(--dark); transform:rotate(-1deg); }
+.sticker.blue { background:var(--blue); color:#fff; transform:rotate(2deg); }
+
+/* BIG QUOTE */
+.danner-quote-big { padding:2rem; background:linear-gradient(135deg,rgba(230,57,70,0.1),rgba(255,209,102,0.06)); border-left:5px solid var(--red); border-radius:0 8px 8px 0; margin:1rem 0; }
+.danner-quote-big p { font-family:'Permanent Marker',cursive; font-size:clamp(1.1rem,3vw,1.6rem); line-height:1.5; }
+.danner-quote-big cite { display:block; margin-top:0.8rem; font-family:'Caveat',cursive; font-size:0.95rem; color:var(--muted); font-style:normal; }
+
+/* TIMELINE */
+.timeline { padding-left:2rem; position:relative; }
+.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--yellow),var(--red),var(--blue)); border-radius:99px; }
+.tl-item { position:relative; padding-left:1.5rem; margin-bottom:2.2rem; }
+.tl-item::before { content:''; position:absolute; left:-2.15rem; top:0.4rem; width:13px; height:13px; background:var(--yellow); border-radius:50%; border:3px solid var(--dark); }
+.tl-year { font-family:'Black Han Sans',sans-serif; font-size:0.8rem; color:var(--yellow); letter-spacing:0.1em; }
+.tl-title { font-family:'Permanent Marker',cursive; font-size:1.15rem; color:var(--text); margin:0.2rem 0; }
+.tl-desc { font-family:'Caveat',cursive; font-size:1rem; color:var(--muted); line-height:1.5; }
+
+/* TIER LIST */
+.tier-row { display:flex; align-items:stretch; margin-bottom:0.5rem; border-radius:6px; overflow:hidden; border:1px solid var(--border); }
+.tier-label { width:58px; min-height:70px; display:flex; align-items:center; justify-content:center; font-family:'Black Han Sans',sans-serif; font-size:2rem; flex-shrink:0; }
+.tier-s .tier-label { background:#ff6b6b; } .tier-a .tier-label { background:#ffa94d; } .tier-b .tier-label { background:#ffd43b; color:#333; }
+.tier-c .tier-label { background:#69db7c; color:#333; } .tier-d .tier-label { background:#74c0fc; } .tier-f .tier-label { background:#cc5de8; }
+.tier-items { flex:1; background:var(--card); padding:0.7rem 1rem; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; }
+.tier-item { font-family:'Caveat',cursive; font-size:1rem; font-weight:700; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:6px; padding:0.35rem 0.7rem; white-space:nowrap; transition:transform 0.15s; }
+.tier-item:hover { transform:scale(1.06) rotate(-1deg); }
+
+/* QUOTES */
+.quote-display { background:var(--card); border:3px solid var(--yellow); border-radius:12px; padding:3rem 2rem; margin:2rem 0; position:relative; min-height:200px; display:flex; flex-direction:column; align-items:center; justify-content:center; transition:all 0.3s ease; }
+.quote-display::before { content:'\275D'; font-size:5rem; color:var(--yellow); opacity:0.12; position:absolute; top:0.5rem; left:1rem; line-height:1; font-family:serif; }
+.quote-text { font-family:'Permanent Marker',cursive; font-size:clamp(1.1rem,3vw,1.6rem); line-height:1.5; color:var(--text); position:relative; z-index:1; text-align:center; }
+.quote-sub { font-family:'Caveat',cursive; font-size:1rem; color:var(--muted); margin-top:1rem; position:relative; z-index:1; }
+.past-quote { padding:0.7rem 1rem; border-left:3px solid var(--border); margin-bottom:0.4rem; font-family:'Caveat',cursive; font-size:0.95rem; color:var(--muted); transition:border-color 0.2s; }
+.past-quote:hover { border-color:var(--yellow); color:var(--text); }
+
+/* FACTS BENTO */
+.fact-bento { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+@media(max-width:700px){ .fact-bento{grid-template-columns:1fr 1fr;} }
+@media(max-width:430px){ .fact-bento{grid-template-columns:1fr;} }
+.fact-card { background:var(--card); border:2px solid var(--border); border-radius:10px; padding:1.5rem; position:relative; overflow:hidden; transition:transform 0.2s,border-color 0.2s; cursor:default; }
+.fact-card:hover { transform:scale(1.03) rotate(0.4deg); }
+.fact-card.big { grid-column:span 2; } .fact-card.tall { grid-row:span 2; }
+@media(max-width:700px){ .fact-card.big{grid-column:span 1;} }
+.fact-card .fnum { font-family:'Black Han Sans',sans-serif; font-size:3.5rem; line-height:1; opacity:0.1; position:absolute; bottom:0.3rem; right:0.8rem; }
+.fact-card h4 { font-family:'Permanent Marker',cursive; font-size:1.05rem; margin-bottom:0.5rem; }
+.fact-card p { font-family:'Caveat',cursive; font-size:0.98rem; line-height:1.6; color:#bbb; }
+.fc-red{border-color:rgba(230,57,70,0.45);} .fc-red h4{color:var(--red);}
+.fc-yellow{border-color:rgba(255,209,102,0.45);} .fc-yellow h4{color:var(--yellow);}
+.fc-green{border-color:rgba(6,214,160,0.45);} .fc-green h4{color:var(--green);}
+.fc-blue{border-color:rgba(17,138,178,0.45);} .fc-blue h4{color:var(--blue);}
+
+/* POLLS */
+.poll-card { background:var(--card); border:2px solid var(--border); border-radius:10px; padding:2rem; margin-bottom:2rem; }
+.poll-question { font-family:'Permanent Marker',cursive; font-size:1.2rem; color:var(--text); margin-bottom:1.2rem; line-height:1.4; }
+.poll-options { display:flex; flex-direction:column; gap:0.6rem; }
+.poll-option { position:relative; background:rgba(255,255,255,0.04); border:2px solid var(--border); border-radius:8px; padding:0.75rem 1rem; cursor:pointer; overflow:hidden; transition:border-color 0.15s; font-family:'Caveat',cursive; font-size:1rem; color:var(--text); text-align:left; width:100%; }
+.poll-option:hover:not(:disabled) { border-color:var(--yellow); }
+.poll-option:disabled { cursor:default; border-color:var(--green); }
+.poll-bar { display:none; position:absolute; inset:0; background:rgba(6,214,160,0.12); z-index:0; transition:width 0.5s ease; }
+.poll-bar.r { background:rgba(230,57,70,0.15); } .poll-bar.y { background:rgba(255,209,102,0.12); } .poll-bar.b { background:rgba(17,138,178,0.15); }
+.poll-opt-text { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; }
+.poll-pct { font-family:'Black Han Sans',sans-serif; font-size:0.85rem; color:var(--green); display:none; }
+.poll-option:disabled .poll-bar { display:block; }
+.poll-option:disabled .poll-pct { display:block; }
+
+/* GUESTBOOK */
+.gb-form { background:var(--card); border:2px solid var(--border); border-radius:10px; padding:2rem; margin-bottom:2rem; }
+.gb-form h3 { font-family:'Permanent Marker',cursive; font-size:1.3rem; color:var(--yellow); margin-bottom:1.2rem; }
+.form-row { margin-bottom:1rem; }
+.form-row label { display:block; font-family:'Caveat',cursive; font-size:0.95rem; color:var(--muted); margin-bottom:0.35rem; font-weight:700; }
+.form-row input, .form-row textarea, .form-row select { width:100%; background:rgba(255,255,255,0.05); border:2px solid var(--border); border-radius:6px; color:var(--text); font-family:'Caveat',cursive; font-size:1rem; padding:0.65rem 0.9rem; outline:none; transition:border-color 0.15s; resize:vertical; }
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus { border-color:var(--yellow); }
+.form-row select option { background:var(--dark); }
+.entry { background:var(--card); border:2px solid var(--border); border-radius:8px; padding:1.2rem 1.4rem; margin-bottom:0.8rem; animation:slideIn 0.3s ease both; }
+.entry:hover { border-color:rgba(255,209,102,0.3); }
+.entry-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem; }
+.entry-name { font-family:'Permanent Marker',cursive; font-size:1rem; color:var(--yellow); }
+.entry-class { font-family:'Caveat',cursive; font-size:0.85rem; color:var(--muted); }
+.entry-msg { font-family:'Caveat',cursive; font-size:1rem; line-height:1.6; color:#ccc; }
+.entry-rating { margin-top:0.4rem; color:var(--yellow); font-size:0.95rem; }
+@keyframes slideIn { from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);} }
+
+/* COUNTER */
+.counter-strip { display:flex; max-width:700px; margin:3rem auto 0; border:2px solid var(--border); border-radius:8px; overflow:hidden; }
+.counter-item { flex:1; padding:1.5rem 0.5rem; text-align:center; border-right:1px solid var(--border); background:var(--card); }
+.counter-item:last-child { border-right:none; }
+.counter-num { font-family:'Black Han Sans',sans-serif; font-size:clamp(2rem,5vw,3.5rem); color:var(--yellow); line-height:1; }
+.counter-label { font-family:'Caveat',cursive; font-size:0.85rem; color:var(--muted); margin-top:0.3rem; }
+
+/* HERO */
+.hero-wrap { min-height:calc(100vh - 56px); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3rem 1.5rem; position:relative; overflow:hidden; }
+.hero-wrap::before { content:''; position:absolute; inset:-50%; background-image:linear-gradient(rgba(255,209,102,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,209,102,0.06) 1px,transparent 1px); background-size:60px 60px; animation:gridMove 20s linear infinite; }
+@keyframes gridMove { to{transform:translateY(60px) translateX(60px);} }
+.hero-tag { font-family:'Caveat',cursive; font-size:1.2rem; color:var(--green); margin-bottom:1rem; position:relative; animation:popIn 0.5s both; }
+.hero-main { font-family:'Permanent Marker',cursive; font-size:clamp(4rem,16vw,12rem); line-height:0.9; position:relative; animation:popIn 0.5s 0.1s both; }
+.hero-main .l1 { color:var(--text); display:block; }
+.hero-main .l2 { color:var(--yellow); display:block; -webkit-text-stroke:3px var(--yellow); }
+.hero-desc { font-family:'Caveat',cursive; font-size:clamp(1rem,3vw,1.5rem); color:var(--muted); margin-top:1.5rem; max-width:480px; position:relative; animation:popIn 0.5s 0.2s both; }
+.hero-badges { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:1.8rem; position:relative; animation:popIn 0.5s 0.3s both; }
+.badge { font-family:'Caveat',cursive; font-size:1rem; font-weight:700; padding:0.35rem 0.9rem; border-radius:99px; border:2px solid; animation:wiggle 3s ease-in-out infinite; }
+.badge:nth-child(1){color:var(--red);border-color:var(--red);animation-delay:0s;}
+.badge:nth-child(2){color:var(--yellow);border-color:var(--yellow);animation-delay:0.3s;}
+.badge:nth-child(3){color:var(--green);border-color:var(--green);animation-delay:0.6s;}
+.badge:nth-child(4){color:var(--blue);border-color:var(--blue);animation-delay:0.9s;}
+.badge:nth-child(5){color:var(--red);border-color:var(--red);animation-delay:1.2s;}
+@keyframes wiggle { 0%,100%{transform:rotate(-1deg) scale(1);} 50%{transform:rotate(1deg) scale(1.04);} }
+@keyframes popIn { from{opacity:0;transform:scale(0.85) translateY(20px);} to{opacity:1;transform:none;} }
+
+/* FOOTER */
+footer { text-align:center; padding:2rem; border-top:2px solid var(--border); margin-top:4rem; }
+footer p { font-family:'Caveat',cursive; font-size:1rem; color:var(--muted); }
+.heart { color:var(--red); animation:beat 1s infinite; display:inline-block; }
+@keyframes beat { 0%,100%{transform:scale(1);} 50%{transform:scale(1.35);} }
+
+/* SPARKLE */
+.spark { position:fixed; pointer-events:none; z-index:9998; border-radius:50%; animation:sparkFade 0.6s ease forwards; }
+@keyframes sparkFade { to{opacity:0;transform:scale(0) translateY(-20px);} }
+
+::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:var(--dark);} ::-webkit-scrollbar-thumb{background:var(--yellow);border-radius:99px;}
+@keyframes auraPulse { 0%,100%{opacity:0.6;transform:scale(1);} 50%{opacity:1;transform:scale(1.1);} }
+@keyframes auraSpin { to{transform:rotate(360deg);} }
+#aura-frame:hover #aura-placeholder { border-color:var(--green); background:rgba(6,214,160,0.07); transform:scale(1.03); }
+
+/* content wrapper */
+.content { max-width:900px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+.content-sm { max-width:700px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+
+/* MUSIC QUIZ */
+.quiz-wrap { max-width:700px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+.q-box { background:var(--card); border:2px solid var(--border); border-radius:10px; padding:2rem; margin-bottom:1.5rem; }
+.q-prompt { font-family:'Permanent Marker',cursive; font-size:1.2rem; color:var(--text); margin-bottom:1.2rem; line-height:1.4; }
+.q-opts { display:flex; flex-direction:column; gap:0.6rem; }
+.q-opt { background:rgba(255,255,255,0.04); border:2px solid var(--border); border-radius:7px; padding:0.7rem 1rem; cursor:pointer; font-family:'Caveat',cursive; font-size:1rem; color:var(--text); text-align:left; transition:all 0.15s; }
+.q-opt:hover:not(.answered) { border-color:var(--yellow); background:rgba(255,209,102,0.07); }
+.q-opt.correct { border-color:var(--green); background:rgba(6,214,160,0.12); color:var(--green); cursor:default; }
+.q-opt.wrong { border-color:var(--red); background:rgba(230,57,70,0.1); color:var(--red); cursor:default; }
+.q-opt.reveal-correct { border-color:var(--green); background:rgba(6,214,160,0.08); cursor:default; }
+.q-feedback { font-family:'Caveat',cursive; font-size:1.05rem; margin-top:0.8rem; min-height:1.5rem; }
+.score-board { background:var(--card); border:2px solid var(--yellow); border-radius:10px; padding:2rem; text-align:center; margin-bottom:1.5rem; }
+.score-big { font-family:'Black Han Sans',sans-serif; font-size:4rem; color:var(--yellow); line-height:1; }
+.score-label { font-family:'Caveat',cursive; font-size:1.2rem; color:var(--muted); margin-top:0.4rem; }
+
+/* DANNER DAY COUNTDOWN */
+.countdown-wrap { text-align:center; padding:2rem; }
+.cd-box { display:inline-flex; gap:1rem; margin:2rem 0; }
+.cd-unit { background:var(--card); border:2px solid var(--yellow); border-radius:8px; padding:1.2rem 1.5rem; min-width:80px; }
+.cd-num { font-family:'Black Han Sans',sans-serif; font-size:3rem; color:var(--yellow); line-height:1; }
+.cd-label { font-family:'Caveat',cursive; font-size:0.85rem; color:var(--muted); }
+@media(max-width:500px){ .cd-box{gap:0.5rem;} .cd-unit{padding:0.8rem 0.8rem;min-width:60px;} .cd-num{font-size:2rem;} }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to MRDANNERGLAZE</h1>
-        <p>This is the landing page for the MRDANNERGLAZE project.</p>
-        <p>Add your content here to make this page your own.</p>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>🐐</span> Mr.Danner</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="goTo('home')" class="active" id="nav-home">🏠 Home</a></li>
+    <li><a onclick="goTo('about')" id="nav-about">📖 About</a></li>
+    <li><a onclick="goTo('tierlist')" id="nav-tierlist">📊 Tier List</a></li>
+    <li><a onclick="goTo('quotes')" id="nav-quotes">💬 Quotes</a></li>
+    <li><a onclick="goTo('facts')" id="nav-facts">🔥 Facts</a></li>
+    <li><a onclick="goTo('quiz')" id="nav-quiz">🎯 Quiz</a></li>
+    <li><a onclick="goTo('poll')" id="nav-poll">🗳️ Polls</a></li>
+    <li><a onclick="goTo('guestbook')" id="nav-guestbook">✍️ Guestbook</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HOME ========== -->
+<div class="page active" id="page-home">
+  <div class="hero-wrap">
+    <div class="hero-tag">⭐ the greatest history teacher to ever do it ⭐</div>
+    <h1 class="hero-main">
+      <span class="l1">MR.</span>
+      <span class="l2">DANNER</span>
+    </h1>
+    <p class="hero-desc">Certified legend. History teacher. The man who made you actually care about dead people.</p>
+    <div class="hero-badges">
+      <span class="badge">🏆 GOAT</span>
+      <span class="badge">🔥 Fire Lessons</span>
+      <span class="badge">📚 Big Brain</span>
+      <span class="badge">😂 Actually Funny</span>
+      <span class="badge">💯 100/10</span>
     </div>
+    <div class="counter-strip">
+      <div class="counter-item"><div class="counter-num" data-target="10">0</div><div class="counter-label">out of 10</div></div>
+      <div class="counter-item"><div class="counter-num" data-target="0">99</div><div class="counter-label">boring lessons</div></div>
+      <div class="counter-item"><div class="counter-num" data-target="1">99</div><div class="counter-label">rank in school</div></div>
+      <div class="counter-item"><div class="counter-num" data-target="100">0</div><div class="counter-label">% would rec</div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+
+  <section style="max-width:900px;margin:0 auto;padding:4rem 1.5rem;">
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+      <h2 style="font-family:'Permanent Marker',cursive;font-size:clamp(1.8rem,5vw,3rem);">Why does <span class="accent">everyone</span> love him?</h2>
+    </div>
+    <div class="grid2">
+      <div class="about-card reveal"><span class="icon">🎤</span><h3>Storytelling God</h3><p>When Mr. Danner explains history it literally feels like a movie. You forget you're even in class.</p></div>
+      <div class="about-card reveal"><span class="icon">🧠</span><h3>Actually Smart fr</h3><p>Knows everything. Ask him anything and he has the answer plus context you didn't ask for but needed.</p></div>
+      <div class="about-card reveal"><span class="icon">😭</span><h3>Never Lets You Fail</h3><p>Will explain it 10 different ways until it clicks. He actually wants you to get it.</p></div>
+      <div class="about-card reveal"><span class="icon">💀</span><h3>The Jokes Land</h3><p>Funny without even trying. You're laughing and absorbing information at the same time. Diabolical.</p></div>
+      <div class="about-card reveal"><span class="icon">🤝</span><h3>Real One</h3><p>Treats students like actual people. Remembers your name. Not a robot unlike some teachers.</p></div>
+      <div class="about-card reveal"><span class="icon">🏛️</span><h3>Makes History Relevant</h3><p>"Why does this matter?" He answers it before you even ask. Every. Single. Time.</p></div>
+    </div>
+  </section>
+  <footer><p>made with <span class="heart">♥</span> and maximum respect · by AK9099080</p></footer>
+</div>
+
+<!-- ========== ABOUT ========== -->
+<div class="page" id="page-about">
+  <div class="page-header"><h1>The <span class="accent">Legend</span><br>Himself</h1><p>everything you need to know</p></div>
+  <div class="content">
+    <!-- AURA PHOTO -->
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+      <div id="aura-frame" style="display:inline-block;position:relative;cursor:pointer;" onclick="document.getElementById('aura-input').click()">
+        <div id="aura-placeholder" style="width:220px;height:220px;border-radius:50%;border:4px dashed var(--yellow);display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,209,102,0.05);margin:0 auto;transition:all 0.2s;position:relative;overflow:hidden;">
+          <div id="aura-glow" style="position:absolute;inset:-10px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,209,102,0.18) 0%,transparent 70%);animation:auraPulse 2.5s ease-in-out infinite;pointer-events:none;"></div>
+          <span style="font-size:2.5rem;">📸</span>
+          <p style="font-family:'Caveat',cursive;font-size:1rem;color:var(--yellow);margin-top:0.5rem;font-weight:700;">Drop his aura photo<br>right here</p>
+          <p style="font-family:'Caveat',cursive;font-size:0.8rem;color:var(--muted);margin-top:0.3rem;">click to upload</p>
+        </div>
+        <img id="aura-img" src="" alt="Mr. Danner" style="display:none;width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid var(--yellow);box-shadow:0 0 40px rgba(255,209,102,0.4),0 0 80px rgba(255,209,102,0.15);">
+        <div id="aura-ring" style="display:none;position:absolute;inset:-12px;border-radius:50%;border:3px solid rgba(255,209,102,0.3);animation:auraSpin 8s linear infinite;pointer-events:none;"></div>
+        <div id="aura-ring2" style="display:none;position:absolute;inset:-22px;border-radius:50%;border:2px dashed rgba(255,100,100,0.25);animation:auraSpin 12s linear infinite reverse;pointer-events:none;"></div>
+      </div>
+      <input type="file" id="aura-input" accept="image/*" style="display:none;" onchange="loadAura(event)">
+      <div style="margin-top:1rem;">
+        <p id="aura-label" style="font-family:'Permanent Marker',cursive;font-size:1.1rem;color:var(--yellow);">THE MAN. THE MYTH. THE LEGEND.</p>
+        <p style="font-family:'Caveat',cursive;font-size:0.9rem;color:var(--muted);margin-top:0.3rem;">aura level: <span id="aura-level" style="color:var(--green);font-weight:700;">UNMATCHED 🔥</span></p>
+        <button id="aura-remove" onclick="removeAura(event)" class="btn btn-red" style="display:none;margin-top:0.8rem;font-size:0.8rem;padding:0.4rem 1rem;">✕ Remove Photo</button>
+      </div>
+    </div>
+
+    <div class="danner-quote-big reveal"><p>"Those who cannot remember the past are condemned to repeat it."</p><cite>— George Santayana, but Mr. Danner quotes it better than anyone</cite></div>
+
+    <div class="grid2" style="margin-top:2rem;">
+      <div class="about-card reveal"><span class="icon">📜</span><h3>The Subject</h3><p>History. But the REAL story — the drama, the chaos, the "wait that actually happened??" moments.</p></div>
+      <div class="about-card reveal"><span class="icon">🎯</span><h3>Teaching Style</h3><p>Engaging, interactive, lowkey cinematic. He doesn't just read the textbook — he makes you feel like you were there.</p></div>
+      <div class="about-card reveal"><span class="icon">🏆</span><h3>Awards (Unofficial)</h3><p>Best Teacher In The Building (student vote, unanimous). Most Likely To Make You Like History.</p></div>
+      <div class="about-card reveal"><span class="icon">⚡</span><h3>Superpower</h3><p>Makes 45 minutes feel like 10. Scientifically impossible. Yet he does it every single day.</p></div>
+    </div>
+
+    <div class="reveal" style="margin-top:3rem;">
+      <h2 style="font-family:'Permanent Marker',cursive;font-size:2rem;margin-bottom:1.5rem;">The <span class="accent">Timeline</span> of Excellence</h2>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">LEGENDARY ERA</div><div class="tl-title">Became a History Teacher</div><div class="tl-desc">The world changed forever. Students who previously hated history began paying attention. Historians called it pivotal.</div></div>
+        <div class="tl-item"><div class="tl-year">AFTER THAT</div><div class="tl-title">Started Going Viral in the Hallways</div><div class="tl-desc">Students began quoting him outside of class. "Did Mr. Danner say that?" became a common phrase.</div></div>
+        <div class="tl-item"><div class="tl-year">RECENTLY</div><div class="tl-title">Achieved Maximum GOAT Status</div><div class="tl-desc">Unanimous agreement reached. No debate necessary. The people have spoken.</div></div>
+        <div class="tl-item"><div class="tl-year">RIGHT NOW</div><div class="tl-title">This Website Was Created</div><div class="tl-desc">A tribute for the ages. Someone spent real time on this. That someone is a fan. Obviously.</div></div>
+        <div class="tl-item"><div class="tl-year">THE FUTURE</div><div class="tl-title">Will Be Remembered Forever</div><div class="tl-desc">Former students years from now will say "I had this history teacher and he was literally the best." That's Mr. Danner.</div></div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:3rem;padding:2rem;background:var(--card);border:2px dashed var(--yellow);border-radius:12px;text-align:center;">
+      <p style="font-family:'Permanent Marker',cursive;font-size:1.5rem;color:var(--yellow);">Official Danner Fan Club</p>
+      <p style="font-family:'Caveat',cursive;font-size:1.1rem;color:var(--muted);margin-top:0.5rem;">Membership: everyone who's ever had him as a teacher</p>
+      <div style="margin-top:1rem;"><span class="sticker">MEMBER ✓</span><span class="sticker red">CERTIFIED FAN</span><span class="sticker green">FULLY GLAZED</span><span class="sticker blue">NO REFUNDS</span></div>
+    </div>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<!-- ========== TIER LIST ========== -->
+<div class="page" id="page-tierlist">
+  <div class="page-header"><h1>The Official<br><span class="accent-red">Tier List</span></h1><p>ranked by me, approved by history</p></div>
+  <div class="content">
+    <h3 style="font-family:'Caveat',cursive;color:var(--muted);text-align:center;margin-bottom:1.5rem;font-size:1.2rem;">🏛️ Historical Events — as Mr. Danner would rank them</h3>
+    <div class="tier-row tier-s reveal"><div class="tier-label">S</div><div class="tier-items"><div class="tier-item">🏛️ Roman Republic</div><div class="tier-item">📜 Magna Carta</div><div class="tier-item">🇺🇸 American Revolution</div><div class="tier-item">🧠 The Enlightenment</div><div class="tier-item">🖨️ Gutenberg's Press</div></div></div>
+    <div class="tier-row tier-a reveal"><div class="tier-label">A</div><div class="tier-items"><div class="tier-item">🗼 French Revolution</div><div class="tier-item">🌍 Age of Exploration</div><div class="tier-item">⚙️ Industrial Revolution</div><div class="tier-item">🕊️ Civil Rights Movement</div><div class="tier-item">🔬 Scientific Revolution</div></div></div>
+    <div class="tier-row tier-b reveal"><div class="tier-label">B</div><div class="tier-items"><div class="tier-item">🏰 Medieval Period</div><div class="tier-item">🎨 The Renaissance</div><div class="tier-item">🚀 Space Race</div><div class="tier-item">⚓ Age of Sail</div></div></div>
+    <div class="tier-row tier-c reveal"><div class="tier-label">C</div><div class="tier-items"><div class="tier-item">🤝 League of Nations</div><div class="tier-item">💰 Mercantilism</div><div class="tier-item">📋 Reconstruction Era</div></div></div>
+    <div class="tier-row tier-d reveal"><div class="tier-label">D</div><div class="tier-items"><div class="tier-item">😤 Appeasement Policy</div><div class="tier-item">🌾 Dust Bowl Mismanagement</div><div class="tier-item">🙄 Prohibition (kinda)</div></div></div>
+    <div class="tier-row tier-f reveal"><div class="tier-label">F</div><div class="tier-items"><div class="tier-item">💀 Every Genocide Ever</div><div class="tier-item">😬 That One Assassination</div><div class="tier-item">🤦 Colonialism</div></div></div>
+
+    <div class="sdiv" style="margin:3rem 0;"></div>
+
+    <h3 style="font-family:'Caveat',cursive;color:var(--muted);text-align:center;margin-bottom:1.5rem;font-size:1.2rem;">🎓 Types of Students — Mr. Danner's perspective probably</h3>
+    <div class="tier-row tier-s reveal"><div class="tier-label">S</div><div class="tier-items"><div class="tier-item">😇 Actually does the reading</div><div class="tier-item">🙋 Asks good questions</div><div class="tier-item">📝 Takes real notes</div></div></div>
+    <div class="tier-row tier-a reveal"><div class="tier-label">A</div><div class="tier-items"><div class="tier-item">🙂 Pays attention</div><div class="tier-item">😮 Reacts to the dramatic parts</div><div class="tier-item">🤔 Asks "wait why?"</div></div></div>
+    <div class="tier-row tier-b reveal"><div class="tier-label">B</div><div class="tier-items"><div class="tier-item">😴 Tired but trying</div><div class="tier-item">📱 Puts phone away when asked</div></div></div>
+    <div class="tier-row tier-c reveal"><div class="tier-label">C</div><div class="tier-items"><div class="tier-item">😐 Physically present</div><div class="tier-item">🥱 "Is this gonna be on the test"</div></div></div>
+    <div class="tier-row tier-f reveal"><div class="tier-label">F</div><div class="tier-items"><div class="tier-item">😑 "When will I use this"</div><div class="tier-item">💤 Asleep day 1</div><div class="tier-item">😤 "This is boring" (WRONG)</div></div></div>
+
+    <p style="font-family:'Caveat',cursive;color:var(--muted);text-align:center;margin-top:2rem;font-size:1.1rem;" class="reveal">⚠️ mr. danner did not endorse this tier list but i think he'd agree with most of it</p>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<!-- ========== QUOTES ========== -->
+<div class="page" id="page-quotes">
+  <div class="page-header"><h1><span class="accent">Wisdom</span><br>Generator</h1><p>press the button. receive enlightenment.</p></div>
+  <div class="content-sm">
+    <div class="quote-display" id="quoteDisplay">
+      <p class="quote-text" id="quoteText">Press the button below to receive today's wisdom from the Danner archives.</p>
+      <p class="quote-sub" id="quoteSub">— waiting for you to click...</p>
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <button class="btn" onclick="newQuote()">🎲 New Quote</button>
+      <button class="btn btn-red" onclick="shareQuote()">📋 Copy It</button>
+    </div>
+    <div id="quoteHistory" style="margin-top:3rem;display:none;">
+      <h3 style="font-family:'Permanent Marker',cursive;color:var(--muted);font-size:1rem;margin-bottom:1rem;letter-spacing:0.1em;">📜 RECENTLY SHOWN</h3>
+      <div id="historyList"></div>
+    </div>
+    <div style="margin-top:3rem;">
+      <div class="danner-quote-big reveal"><p>"History doesn't repeat itself, but it does rhyme."</p><cite>— Mark Twain. Honestly sounds like something Mr. Danner says.</cite></div>
+      <div class="danner-quote-big reveal" style="border-left-color:var(--blue);"><p>"The more you know about the past, the better prepared you are for the future."</p><cite>— Theodore Roosevelt. Mr. Danner has definitely said this.</cite></div>
+      <div class="danner-quote-big reveal" style="border-left-color:var(--green);"><p>"In teaching others we teach ourselves."</p><cite>— Ancient proverb. This is literally what Mr. Danner does every day no cap.</cite></div>
+    </div>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<!-- ========== FACTS ========== -->
+<div class="page" id="page-facts">
+  <div class="page-header"><h1>🔥 <span class="accent-green">Danner</span><br>Facts</h1><p>did you know? (you should.)</p></div>
+  <div class="content">
+    <div class="fact-bento">
+      <div class="fact-card fc-yellow reveal big"><h4>Makes History Feel Like Netflix</h4><p>Mr. Danner narrates history better than most documentaries. Every lesson has plot twists, character development, and cliffhangers. You're actually sad when class ends.</p><span class="fnum">01</span></div>
+      <div class="fact-card fc-red reveal"><h4>The Clock Doesn't Exist</h4><p>45 minutes = 5 minutes in his class. Time moves differently. No explanation available.</p><span class="fnum">02</span></div>
+      <div class="fact-card fc-blue reveal"><h4>Remembers Everyone</h4><p>Knows your name, your vibe, your learning style. Not normal. This is a gift.</p><span class="fnum">03</span></div>
+      <div class="fact-card fc-green reveal"><h4>Zero Boring Lessons on Record</h4><p>Researchers have studied this. They cannot find a single documented boring Danner lesson. The data is in.</p><span class="fnum">04</span></div>
+      <div class="fact-card fc-yellow reveal tall"><h4>His Explanations Actually Stick</h4><p>You know how you learn something and forget it immediately? That doesn't happen with Mr. Danner. You leave class and you KNOW things. Real, lasting knowledge.</p><br><p style="color:var(--yellow);">Fun fact: this is literally what good teaching is but it's so rare it feels special.</p><span class="fnum">05</span></div>
+      <div class="fact-card fc-red reveal"><h4>Actual Historian Energy</h4><p>Not just from a book. He brings context, nuance, the "here's what the textbook doesn't tell you" takes.</p><span class="fnum">06</span></div>
+      <div class="fact-card fc-blue reveal big"><h4>Makes You Google More at Home</h4><p>You go home and keep researching because he made you genuinely curious about something that happened 300 years ago. That is insane. That is a gift.</p><span class="fnum">07</span></div>
+      <div class="fact-card fc-green reveal"><h4>Lowkey Inspiring</h4><p>Some people want to be historians now. Before Danner they did not. Coincidence? No.</p><span class="fnum">08</span></div>
+      <div class="fact-card fc-yellow reveal"><h4>The Best Pop Quizzes</h4><p>Even his pop quizzes are fair because you retained the info. Wild concept.</p><span class="fnum">09</span></div>
+    </div>
+    <div class="reveal" style="margin-top:2.5rem;padding:2rem;background:var(--card);border:2px solid var(--border);border-radius:10px;text-align:center;">
+      <p style="font-family:'Permanent Marker',cursive;font-size:1.7rem;color:var(--yellow);">The Bottom Line</p>
+      <p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.7;color:#ccc;margin-top:0.8rem;max-width:500px;margin-left:auto;margin-right:auto;">Mr. Danner is not just a teacher. He's the reason some of us actually like history. That's rare. That deserves a whole website minimum.</p>
+    </div>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<!-- ========== QUIZ ========== -->
+<div class="page" id="page-quiz">
+  <div class="page-header"><h1>🎯 <span class="accent-blue">How Well</span><br>Do You Know</h1><p>mr. danner? take the quiz and find out.</p></div>
+  <div class="quiz-wrap">
+    <div class="score-board reveal">
+      <div class="score-big" id="scoreDisplay">0 / 8</div>
+      <div class="score-label" id="scoreSub">answer questions to see your score</div>
+    </div>
+
+    <div class="q-box reveal" id="q1">
+      <div class="q-prompt">What subject does Mr. Danner teach?</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q1',this,false,'nope, wrong class entirely')">🧮 Math</button>
+        <button class="q-opt" onclick="answer('q1',this,true,'CORRECT!! history, obviously!!')">🏛️ History</button>
+        <button class="q-opt" onclick="answer('q1',this,false,'close but no — that would be cool tho')">🌍 Geography</button>
+        <button class="q-opt" onclick="answer('q1',this,false,'lol no')">🧪 Science</button>
+      </div>
+      <div class="q-feedback" id="fb-q1"></div>
+    </div>
+
+    <div class="q-box reveal" id="q2">
+      <div class="q-prompt">True or false: Mr. Danner has ever had a boring class?</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q2',this,false,'WRONG. this is factually incorrect. no boring classes on record.')">😐 True, I think?</button>
+        <button class="q-opt" onclick="answer('q2',this,true,'CORRECT!! false!! never happened!! not once!!')">🔥 False — never happened</button>
+      </div>
+      <div class="q-feedback" id="fb-q2"></div>
+    </div>
+
+    <div class="q-box reveal" id="q3">
+      <div class="q-prompt">What is Mr. Danner's overall rating out of 10?</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q3',this,false,'underrating him respectfully')">🤷 Like a 7</button>
+        <button class="q-opt" onclick="answer('q3',this,false,'closer but still wrong')">👍 9/10</button>
+        <button class="q-opt" onclick="answer('q3',this,true,'CORRECT!! 10/10!! the only answer!!')">💯 10/10</button>
+        <button class="q-opt" onclick="answer('q3',this,false,'the scale doesnt go that low')">😬 6/10</button>
+      </div>
+      <div class="q-feedback" id="fb-q3"></div>
+    </div>
+
+    <div class="q-box reveal" id="q4">
+      <div class="q-prompt">How does time feel in Mr. Danner's class?</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q4',this,false,'the opposite. you want it to never end.')">🐌 Extremely slow</button>
+        <button class="q-opt" onclick="answer('q4',this,true,'CORRECT!! it flies!! you blink and class is over!!')">⚡ Goes by way too fast</button>
+        <button class="q-opt" onclick="answer('q4',this,false,'nope. you are fully present and awake.')">😑 Normal I guess</button>
+      </div>
+      <div class="q-feedback" id="fb-q4"></div>
+    </div>
+
+    <div class="q-box reveal" id="q5">
+      <div class="q-prompt">If Mr. Danner were a historical figure, he would most be like:</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q5',this,false,'not wrong energy but no')">⚔️ A famous general</button>
+        <button class="q-opt" onclick="answer('q5',this,true,'CORRECT!! a legendary scholar who everyone listened to!!')">📜 A legendary scholar / teacher</button>
+        <button class="q-opt" onclick="answer('q5',this,false,'maybe for the crown energy but nah')">👑 A wise king</button>
+        <button class="q-opt" onclick="answer('q5',this,false,'he already is an explorer tbh')">🧭 An explorer</button>
+      </div>
+      <div class="q-feedback" id="fb-q5"></div>
+    </div>
+
+    <div class="q-box reveal" id="q6">
+      <div class="q-prompt">What happens when you don't understand something in Mr. Danner's class?</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q6',this,false,'absolutely not his style')">😤 He moves on anyway</button>
+        <button class="q-opt" onclick="answer('q6',this,false,'he would never')">🤷 He just marks you wrong</button>
+        <button class="q-opt" onclick="answer('q6',this,true,'CORRECT!! finds another angle until it clicks!! legend behavior!!')">🔄 He explains it a different way until it clicks</button>
+      </div>
+      <div class="q-feedback" id="fb-q6"></div>
+    </div>
+
+    <div class="q-box reveal" id="q7">
+      <div class="q-prompt">Complete the sentence: "Mr. Danner makes history feel like ___"</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q7',this,false,'this is the wrong answer and you know it')">📖 A textbook</button>
+        <button class="q-opt" onclick="answer('q7',this,true,'CORRECT!! a movie!! with drama and plot twists and everything!!')">🎬 A movie / real life drama</button>
+        <button class="q-opt" onclick="answer('q7',this,false,'it is NOT a chore. try again.')">😩 A chore</button>
+        <button class="q-opt" onclick="answer('q7',this,false,'wrong. it feels very real and present.')">👻 Ancient and irrelevant</button>
+      </div>
+      <div class="q-feedback" id="fb-q7"></div>
+    </div>
+
+    <div class="q-box reveal" id="q8">
+      <div class="q-prompt">What is the correct tier for Mr. Danner?</div>
+      <div class="q-opts">
+        <button class="q-opt" onclick="answer('q8',this,false,'disrespectful')">B tier</button>
+        <button class="q-opt" onclick="answer('q8',this,false,'closer but not enough')">A tier</button>
+        <button class="q-opt" onclick="answer('q8',this,false,'S tier is not enough actually')">S tier</button>
+        <button class="q-opt" onclick="answer('q8',this,true,'CORRECT!! above all tiers!! the tier list was built for lesser people!!')">🐐 Beyond all tiers — his own category</button>
+      </div>
+      <div class="q-feedback" id="fb-q8"></div>
+    </div>
+
+    <div id="quizResult" style="display:none;" class="score-board">
+      <div class="score-big" id="finalScore"></div>
+      <div class="score-label" id="finalMsg"></div>
+      <button class="btn" onclick="resetQuiz()" style="margin-top:1.5rem;">🔄 Try Again</button>
+    </div>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<!-- ========== POLLS ========== -->
+<div class="page" id="page-poll">
+  <div class="page-header"><h1>Hot <span class="accent-blue">Takes</span><br>& Polls</h1><p>vote. the results are already obvious.</p></div>
+  <div class="content-sm">
+    <div class="poll-card reveal">
+      <div class="poll-question">What's Mr. Danner's best quality?</div>
+      <div class="poll-options" id="poll1">
+        <button class="poll-option" onclick="vote('poll1',this,0,38)"><div class="poll-bar y"></div><div class="poll-opt-text"><span>🎤 Storytelling / Explanations</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll1',this,1,29)"><div class="poll-bar r"></div><div class="poll-opt-text"><span>😂 Humor & personality</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll1',this,2,22)"><div class="poll-bar"></div><div class="poll-opt-text"><span>🤝 How much he actually cares</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll1',this,3,11)"><div class="poll-bar b"></div><div class="poll-opt-text"><span>🧠 His knowledge is insane</span><span class="poll-pct"></span></div></button>
+      </div>
+    </div>
+    <div class="poll-card reveal">
+      <div class="poll-question">How much does Mr. Danner go hard (out of 10)?</div>
+      <div class="poll-options" id="poll2">
+        <button class="poll-option" onclick="vote('poll2',this,0,2)"><div class="poll-bar r"></div><div class="poll-opt-text"><span>😐 Like an 8 I guess</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll2',this,1,8)"><div class="poll-bar y"></div><div class="poll-opt-text"><span>🔥 9/10 easily</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll2',this,2,35)"><div class="poll-bar"></div><div class="poll-opt-text"><span>💯 10/10 no debate</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll2',this,3,55)"><div class="poll-bar b"></div><div class="poll-opt-text"><span>🐐 Beyond the scale. Infinite/10.</span><span class="poll-pct"></span></div></button>
+      </div>
+    </div>
+    <div class="poll-card reveal">
+      <div class="poll-question">What historical figure would Mr. Danner be?</div>
+      <div class="poll-options" id="poll3">
+        <button class="poll-option" onclick="vote('poll3',this,0,45)"><div class="poll-bar y"></div><div class="poll-opt-text"><span>🏛️ A great philosopher / scholar</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll3',this,1,20)"><div class="poll-bar r"></div><div class="poll-opt-text"><span>⚔️ A legendary general</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll3',this,2,25)"><div class="poll-bar"></div><div class="poll-opt-text"><span>📜 The historian who wrote everything down</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll3',this,3,10)"><div class="poll-bar b"></div><div class="poll-opt-text"><span>👑 A wise and beloved ruler</span><span class="poll-pct"></span></div></button>
+      </div>
+    </div>
+    <div class="poll-card reveal">
+      <div class="poll-question">If Mr. Danner taught any other subject, which would he crush?</div>
+      <div class="poll-options" id="poll4">
+        <button class="poll-option" onclick="vote('poll4',this,0,30)"><div class="poll-bar r"></div><div class="poll-opt-text"><span>📖 English / Literature</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll4',this,1,40)"><div class="poll-bar y"></div><div class="poll-opt-text"><span>🏛️ Philosophy</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll4',this,2,15)"><div class="poll-bar"></div><div class="poll-opt-text"><span>🌍 Geography</span><span class="poll-pct"></span></div></button>
+        <button class="poll-option" onclick="vote('poll4',this,3,15)"><div class="poll-bar b"></div><div class="poll-opt-text"><span>🎭 Drama (obviously)</span><span class="poll-pct"></span></div></button>
+      </div>
+    </div>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<!-- ========== GUESTBOOK ========== -->
+<div class="page" id="page-guestbook">
+  <div class="page-header"><h1>✍️ Guest<span class="accent">book</span></h1><p>leave your message for the legend himself</p></div>
+  <div class="content-sm">
+    <div class="gb-form reveal">
+      <h3>💬 Drop Your Message</h3>
+      <div class="form-row"><label>Your name (or stay anonymous 👻)</label><input type="text" id="gb-name" placeholder="e.g. Anonymous Student, Period 3..."></div>
+      <div class="form-row"><label>Class / Period</label>
+        <select id="gb-class">
+          <option value="">Select period...</option>
+          <option>Period 1</option><option>Period 2</option><option>Period 3</option><option>Period 4</option><option>Period 5</option><option>Period 6</option>
+          <option>I had him last year</option><option>I've only heard legends of him</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Your message for Mr. Danner</label><textarea id="gb-msg" rows="4" placeholder="Tell him how you really feel..."></textarea></div>
+      <div class="form-row"><label>Rating ⭐</label>
+        <select id="gb-rating">
+          <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ — 5 stars, the max, still not enough</option>
+          <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ — 4 stars (still respectable)</option>
+          <option value="⭐⭐⭐">⭐⭐⭐ — 3 stars (did you attend??)</option>
+        </select>
+      </div>
+      <button class="btn btn-green" onclick="submitEntry()" style="margin-top:0.5rem;">📨 Submit Message</button>
+    </div>
+    <div id="gb-entries">
+      <h3 style="font-family:'Permanent Marker',cursive;font-size:1.2rem;color:var(--muted);margin-bottom:1rem;">📌 ENTRIES</h3>
+    </div>
+  </div>
+  <footer><p>made with <span class="heart">♥</span> for mr. danner · by AK9099080</p></footer>
+</div>
+
+<script>
+// NAV
+function goTo(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  window.scrollTo(0,0);
+  if(document.getElementById('navLinks').classList.contains('open')) toggleMenu();
+  triggerReveal();
+  if(page === 'home') animateCounters();
+}
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('open'); }
+
+// REVEAL
+function triggerReveal() {
+  setTimeout(() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } });
+    }, {threshold:0.08});
+    document.querySelectorAll('.page.active .reveal').forEach(el => obs.observe(el));
+  }, 50);
+}
+triggerReveal();
+
+// COUNTERS
+function animateCounters() {
+  document.querySelectorAll('.counter-num').forEach(el => {
+    const target = +el.dataset.target;
+    const start = +el.textContent;
+    const step = (target - start) / (1000 / 16);
+    let cur = start;
+    const t = setInterval(() => {
+      cur += step;
+      if((step > 0 && cur >= target)||(step < 0 && cur <= target)){el.textContent=target;clearInterval(t);}
+      else el.textContent=Math.round(cur);
+    },16);
+  });
+}
+setTimeout(animateCounters,300);
+
+// QUOTES
+const quotes = [
+  {text:"The past is never where you think you left it.", sub:"— Mr. Danner, mid-lecture"},
+  {text:"History is just drama with better costumes.", sub:"— Mr. Danner, definitely"},
+  {text:"If you think this is boring, you're not paying attention. I promise.", sub:"— Mr. Danner, challengingly"},
+  {text:"Every decision made yesterday is a lesson for today.", sub:"— Mr. Danner, with emphasis"},
+  {text:"Context is everything. Don't let anyone give you facts without context.", sub:"— Mr. Danner, firmly"},
+  {text:"You think ancient history doesn't affect your life? We're about to find out.", sub:"— Mr. Danner, starting class"},
+  {text:"The people who say history is irrelevant haven't studied enough of it.", sub:"— Mr. Danner, calmly"},
+  {text:"Write this down. Not because it's on the test. Because it's actually important.", sub:"— Mr. Danner, gesturing at the board"},
+  {text:"Good question. Let's go deeper.", sub:"— Mr. Danner (the four best words)"},
+  {text:"History is a mirror. Look into it or trip over the same stuff forever.", sub:"— Mr. Danner, probably"},
+  {text:"Real history is messier, more human, and way more interesting than the textbook.", sub:"— Mr. Danner, every day"},
+  {text:"You already know more history than you think. You just don't realize it yet.", sub:"— Mr. Danner, opening the door"},
+];
+let shownQ=[];
+function newQuote(){
+  if(shownQ.length===quotes.length) shownQ=[];
+  const pool=quotes.filter((_,i)=>!shownQ.includes(i));
+  const idx=Math.floor(Math.random()*pool.length);
+  const q=pool[idx]; shownQ.push(quotes.indexOf(q));
+  const d=document.getElementById('quoteDisplay');
+  d.style.opacity=0; d.style.transform='scale(0.95)';
+  setTimeout(()=>{
+    document.getElementById('quoteText').textContent=q.text;
+    document.getElementById('quoteSub').textContent=q.sub;
+    d.style.transition='all 0.3s ease'; d.style.opacity=1; d.style.transform='scale(1)';
+  },200);
+  const item=document.createElement('div'); item.className='past-quote';
+  item.textContent='"'+q.text+'"'; document.getElementById('historyList').prepend(item);
+  document.getElementById('quoteHistory').style.display='block';
+}
+function shareQuote(){
+  const t=document.getElementById('quoteText').textContent;
+  if(navigator.clipboard){ navigator.clipboard.writeText('"'+t+'" — Mr. Danner, probably');
+    const b=document.querySelector('[onclick="shareQuote()"]'); const og=b.textContent;
+    b.textContent='✅ Copied!'; setTimeout(()=>b.textContent=og,2000); }
+}
+
+// QUIZ
+let quizScore=0; let quizAnswered={}; const totalQ=8;
+function answer(qid, btn, correct, feedback){
+  if(quizAnswered[qid]) return;
+  quizAnswered[qid]=true;
+  const opts=btn.closest('.q-opts').querySelectorAll('.q-opt');
+  opts.forEach(o=>o.classList.add('answered'));
+  if(correct){ btn.classList.add('correct'); quizScore++; }
+  else { btn.classList.add('wrong'); opts.forEach(o=>{ if(o.onclick&&o.onclick.toString().includes('true')) o.classList.add('reveal-correct'); }); }
+  document.getElementById('fb-'+qid).textContent=(correct?'✅ ':'❌ ')+feedback;
+  document.getElementById('fb-'+qid).style.color=correct?'var(--green)':'var(--red)';
+  updateScore();
+  if(Object.keys(quizAnswered).length===totalQ) setTimeout(showResult,600);
+}
+function updateScore(){
+  document.getElementById('scoreDisplay').textContent=quizScore+' / '+totalQ;
+  const pct=quizScore/totalQ;
+  document.getElementById('scoreSub').textContent=pct>=0.875?'you know your stuff fr 🔥':pct>=0.5?'decent. keep going.':'pay more attention in class 😭';
+}
+function showResult(){
+  const pct=quizScore/totalQ;
+  const msgs=['bro pay attention in class 😭','ok you know a little 😐','not bad, you were there 👍','pretty good!! danner fan certified 🔥','PERFECT!! certified mr. danner scholar 🐐'];
+  const mi=pct<0.3?0:pct<0.5?1:pct<0.75?2:pct<1?3:4;
+  document.getElementById('finalScore').textContent=quizScore+'/'+totalQ;
+  document.getElementById('finalMsg').textContent=msgs[mi];
+  document.getElementById('quizResult').style.display='block';
+}
+function resetQuiz(){
+  quizScore=0; quizAnswered={};
+  document.querySelectorAll('.q-opt').forEach(o=>{ o.classList.remove('correct','wrong','reveal-correct','answered'); o.disabled=false; });
+  document.querySelectorAll('.q-feedback').forEach(f=>f.textContent='');
+  document.getElementById('scoreDisplay').textContent='0 / 8';
+  document.getElementById('scoreSub').textContent='answer questions to see your score';
+  document.getElementById('quizResult').style.display='none';
+}
+
+// POLLS
+const pollVotes={};
+function vote(pollId, btn, optIdx, myPct){
+  if(pollVotes[pollId]) return;
+  pollVotes[pollId]=optIdx;
+  const opts=document.getElementById(pollId).querySelectorAll('.poll-option');
+  const pcts=[myPct];
+  let rem=100-myPct; const others=opts.length-1;
+  for(let i=0;i<others;i++){ const v=i===others-1?rem:Math.floor(Math.random()*rem*0.6); pcts.push(v); rem-=v; }
+  // assign to options
+  let pi=0;
+  opts.forEach((o,i)=>{
+    const isVoted=(i===optIdx);
+    o.disabled=true;
+    const bar=o.querySelector('.poll-bar'); const pct=o.querySelector('.poll-pct');
+    const val=isVoted?myPct:pcts[++pi]||Math.max(0,rem);
+    bar.style.display='block'; bar.style.width=val+'%'; pct.textContent=val+'%';
+  });
+}
+
+// GUESTBOOK
+const preloaded=[
+  {name:"Sarah K.",cls:"Period 2",msg:"Mr. Danner made me actually want to study history. I literally went home and read extra chapters. That has never happened before. Ever.",rating:"⭐⭐⭐⭐⭐"},
+  {name:"Anonymous",cls:"Period 4",msg:"Best teacher I've had in 3 years of high school no debate. Class flies by every single time.",rating:"⭐⭐⭐⭐⭐"},
+  {name:"Marcus T.",cls:"I had him last year",msg:"I graduated last year and I still think about lessons he taught. That's wild to me. Real impact fr.",rating:"⭐⭐⭐⭐⭐"},
+  {name:"Jess 🌻",cls:"Period 1",msg:"He remembered my name on day 2. DAY TWO. That's a superpower not a skill.",rating:"⭐⭐⭐⭐⭐"},
+];
+function renderEntry(e){
+  const div=document.createElement('div'); div.className='entry';
+  div.innerHTML=`<div class="entry-header"><span class="entry-name">${e.name||'Anonymous'}</span><span class="entry-class">${e.cls||''}</span></div><div class="entry-msg">${e.msg}</div><div class="entry-rating">${e.rating}</div>`;
+  document.getElementById('gb-entries').appendChild(div);
+}
+preloaded.forEach(renderEntry);
+function submitEntry(){
+  const name=document.getElementById('gb-name').value.trim()||'Anonymous';
+  const cls=document.getElementById('gb-class').value||'Unknown Period';
+  const msg=document.getElementById('gb-msg').value.trim();
+  const rating=document.getElementById('gb-rating').value;
+  if(!msg){ const t=document.getElementById('gb-msg'); t.style.borderColor='var(--red)'; setTimeout(()=>t.style.borderColor='',1500); return; }
+  renderEntry({name,cls,msg,rating});
+  document.getElementById('gb-name').value=''; document.getElementById('gb-msg').value='';
+  const b=document.querySelector('[onclick="submitEntry()"]'); const og=b.textContent;
+  b.textContent='✅ Posted!'; b.style.color='var(--green)'; b.style.borderColor='var(--green)';
+  setTimeout(()=>{ b.textContent=og; b.style.color=''; b.style.borderColor=''; },2000);
+}
+
+// AURA PHOTO
+function loadAura(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    const img=document.getElementById('aura-img');
+    img.src=ev.target.result; img.style.display='block';
+    document.getElementById('aura-placeholder').style.display='none';
+    document.getElementById('aura-ring').style.display='block';
+    document.getElementById('aura-ring2').style.display='block';
+    document.getElementById('aura-remove').style.display='inline-block';
+    document.getElementById('aura-label').textContent='MR. DANNER 🐐';
+    const levels=['COSMIC 🌌','UNMATCHED 🔥','LEGENDARY ⚡','GOAT TIER 🏆','OFF THE CHARTS 💥'];
+    document.getElementById('aura-level').textContent=levels[Math.floor(Math.random()*levels.length)];
+  };
+  reader.readAsDataURL(file);
+}
+function removeAura(e){
+  e.stopPropagation();
+  document.getElementById('aura-img').style.display='none';
+  document.getElementById('aura-img').src='';
+  document.getElementById('aura-placeholder').style.display='flex';
+  document.getElementById('aura-ring').style.display='none';
+  document.getElementById('aura-ring2').style.display='none';
+  document.getElementById('aura-remove').style.display='none';
+  document.getElementById('aura-label').textContent='THE MAN. THE MYTH. THE LEGEND.';
+  document.getElementById('aura-level').textContent='UNMATCHED 🔥';
+  document.getElementById('aura-input').value='';
+}
+
+// SPARKLES
+document.addEventListener('mousemove',e=>{
+  if(Math.random()>0.88){
+    const s=document.createElement('div'); s.className='spark';
+    const colors=['var(--yellow)','var(--red)','var(--green)','var(--blue)'];
+    s.style.cssText=`background:${colors[Math.floor(Math.random()*4)]};left:${e.clientX}px;top:${e.clientY}px;width:${Math.random()*7+4}px;height:${Math.random()*7+4}px`;
+    document.body.appendChild(s); setTimeout(()=>s.remove(),600);
+  }
+});
+</script>
 </body>
 </html>
